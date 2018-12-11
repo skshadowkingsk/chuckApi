@@ -39,6 +39,9 @@
             <v-btn flat href="https://github.com/renanbrando/Chuck-Norris-Jokes.git" target="_blank">
                 <span class="mr-2">See More</span>
             </v-btn>
+            <v-btn flat @click="goHome">
+                <v-icon>home</v-icon>
+            </v-btn>
         </v-toolbar>
     </div>
 </template>
@@ -53,8 +56,14 @@ export default {
             drawer: false,
             items: [
                 { title: 'Home', icon: 'list', path: "/" },
-                { title: 'Favorites', icon: 'favorite', path: "/favorites" }
+                { title: 'Favorites', icon: 'favorite', path: "/favorites" },
+                { title: 'Chart', icon: 'bar_chart', path: "/chart" }
             ]
+        }
+    },
+    methods:{
+        goHome(){
+           this.$router.push("/")
         }
     }
 }

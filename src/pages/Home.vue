@@ -40,11 +40,12 @@ export default {
             texto: ""
         }
     },
-mounted(){
+    mounted(){
      setInterval(()=>{if(new Date().getSeconds()=== 30){axios.get("https://api.chucknorris.io/jokes/random").then((response) => {
           let joke = response.data;
           joke.favorite = false;
           this.$store.commit("add", joke);
+          this.$store.commit("increment", joke);
         })
       }
     }, 1000);
@@ -63,11 +64,9 @@ mounted(){
                     let joke = response.data;
                     joke.favorite = false;
                     this.$store.commit("add", joke);
+                    this.$store.commit("increment", joke);
                 })
             },
-        autoAdd: function(){
-         setInterval(this.getJoke, 3000);
-        },
         removeJoke: function (toRemove) {
             this.$store.commit("change", 
                 this.$store.getters.jokes.filter((a) => {

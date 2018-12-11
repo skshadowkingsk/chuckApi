@@ -3,7 +3,6 @@
     <Header v-if="isAuth"/> 
     <v-content>
       <router-view></router-view>
-      
     </v-content>  
   </v-app>
 </template>
