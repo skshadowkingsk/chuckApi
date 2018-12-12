@@ -42,6 +42,9 @@
             <v-btn flat @click="goHome">
                 <v-icon>home</v-icon>
             </v-btn>
+            <v-btn flat @click="logout">
+                <v-icon>logout</v-icon>
+            </v-btn>
         </v-toolbar>
     </div>
 </template>
@@ -55,7 +58,7 @@ export default {
         return {
             drawer: false,
             items: [
-                { title: 'Home', icon: 'list', path: "/" },
+                { title: 'Home', icon: 'list', path: "/home" },
                 { title: 'Favorites', icon: 'favorite', path: "/favorites" },
                 { title: 'Chart', icon: 'bar_chart', path: "/chart" }
             ]
@@ -63,8 +66,16 @@ export default {
     },
     methods:{
         goHome(){
-           this.$router.push("/")
-        }
+           this.$router.push("/home")
+        },
+        logout(){
+          this.$store.dispatch('logout').then(() => {
+               this.$router.push("/login");
+                },error=>{
+                    // eslint-disable-next-line no-console
+                    console.log(error)
+                } 
+          )}
     }
 }
     

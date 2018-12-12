@@ -43,10 +43,11 @@ export default {
             this.snackbar = true;
         },
         favoriteJoke(index) {
-            if (this.jokes[index].favorite)
-                this.jokes[index].favorite = false;
+            index-=1;
+            if (this.$store.getters.jokes[index].favorite)
+                this.$store.getters.jokes[index].favorite = false;
             else
-                this.jokes[index].favorite = true;
+                this.$store.getters.jokes[index].favorite = true;
         }
     },
     computed: {

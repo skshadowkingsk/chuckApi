@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-text-field  label="Filter" placeholder="Chuck Norris can make any lesbian go straight." box color="purple" v-model="texto"/>
-        <div v-for="(joke, index) in jokes" :key="joke.id">
-            <joke :joke="joke" :index="index" v-on:remove="removeJoke" v-on:favorite="favoriteJoke" v-if="filter(joke)" />
+        <div v-for="(joke) in jokes" :key="joke.id">
+            <joke :joke="joke" :index="joke.id" v-on:remove="removeJoke" v-on:favorite="favoriteJoke" v-if="filter(joke)" />
         </div>
         <v-footer class="grey darken-4 " fixed bottom>
                 <div class="white--text ml-5 text-xs-center ">
@@ -37,15 +37,17 @@ export default {
             snackbar: false,
             snackbarTimeout: 6000,
             snackbarText: "",
-            texto: ""
+            texto: "",
         }
     },
     mounted(){
      setInterval(()=>{if(new Date().getSeconds()=== 30){axios.get("https://api.chucknorris.io/jokes/random").then((response) => {
-          let joke = response.data;
-          joke.favorite = false;
-          this.$store.commit("add", joke);
-          this.$store.commit("increment", joke);
+                    let joke = response.data;
+                    this.$store.commit("incrementIndex");
+                    joke.id=this.$store.getters.index;
+                    joke.favorite = false;
+                    this.$store.commit("add", joke);
+                    this.$store.commit("increment", joke);
         })
       }
     }, 1000);
@@ -55,17 +57,20 @@ export default {
         filter: function (todo) {
         let self = this
         if (this.value != "") {
-          return todo.value.toLowerCase().includes(self.texto.toLowerCase()) == true;
+            
+          return (todo.value.toLowerCase().includes(self.texto.toLowerCase()) == true || todo.id.toString().includes(self.texto.toLowerCase()) == true)
         }
         return true
       },
             getJoke: function () {
                 axios.get("https://api.chucknorris.io/jokes/random").then((response) => {
                     let joke = response.data;
+                    this.$store.commit("incrementIndex");
+                    joke.id=this.index
                     joke.favorite = false;
                     this.$store.commit("add", joke);
                     this.$store.commit("increment", joke);
-                })
+                },)
             },
         removeJoke: function (toRemove) {
             this.$store.commit("change", 
@@ -77,6 +82,7 @@ export default {
             this.snackbar = true;
         },
         favoriteJoke(index) {
+            index-=1;
             if (this.$store.getters.jokes[index].favorite)
                 this.$store.getters.jokes[index].favorite = false;
             else
@@ -86,6 +92,9 @@ export default {
     computed:{
         jokes: function(){
             return this.$store.getters.jokes;
+        },
+        index: function(){
+            return this.$store.getters.index;
         }
     }
 }

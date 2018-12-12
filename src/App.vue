@@ -1,7 +1,9 @@
 <template>
-  <v-app>
-    <Header v-if="isAuth"/> 
+  <v-app> 
     <v-content>
+      <router-view name="header">
+        <Header/>
+    </router-view>
       <router-view></router-view>
     </v-content>  
   </v-app>
@@ -18,11 +20,6 @@ export default {
   },
   data () {
     return {
-      person: {
-        id: 1,
-        name: "Renan",
-        age: 25,
-      }
     }
   },
   methods: {

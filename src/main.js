@@ -13,6 +13,16 @@ const router = new VueRouter({
   mode: "history"
 });
 
+const x = store;
+router.beforeEach((to,from,next)=>{
+  if(to.meta.auth){
+    if(!x.getters.isAuth){
+      router.replace("/login");
+    }
+  }
+  next();
+})
+
 new Vue({
   store,
   router,

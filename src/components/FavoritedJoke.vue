@@ -9,7 +9,7 @@
           <v-flex xs10>
             <v-card-title primary-title>
               <div>
-                <div class="headline">#FunJoke {{index + 1}}</div>
+                <div class="headline">#FunJoke {{joke.id}}</div>
                 <div>
                   <blockquote>
                     <p>{{joke.value}}</p>
@@ -27,8 +27,8 @@
         <v-divider light></v-divider>
         <v-card-actions class="pa-4">
           <v-spacer></v-spacer>
-          <v-icon v-if="joke.favorite" class="mx-2" color="red" @click="favorite(index)">favorite</v-icon>
-          <v-icon v-else class="mx-2" color="grey" @click="favorite(index)">favorite</v-icon>
+          <v-icon v-if="joke.favorite" class="mx-2" color="red" @click="favorite(joke.id)">favorite</v-icon>
+          <v-icon v-else class="mx-2" color="grey" @click="favorite(joke.id)">favorite</v-icon>
         </v-card-actions>
       </v-card>
     </v-flex>
