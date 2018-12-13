@@ -8,13 +8,13 @@ export const store = new Vuex.Store({
         jokes: [],isAuth:false,index:0, chartdata: {
             labels: [],
             datasets: [{
-                label: 'Characters per joke',
+                label: 'Characters in the joke',
                 data: [],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(102,51,153, 0.6)',
                 ],
                 borderColor: [
-                    'rgba(255,99,132,1)'
+                    'rgba(o,o,o,1)'
                 ],
                 borderWidth: 1
             }]
