@@ -1,5 +1,5 @@
 <template>
-    <v-content>
+    <v-content class="div">
         <div v-for="(joke, index) in jokes" :key="joke.id">
             <joke :joke="joke" :index="index" v-on:remove="removeJoke" v-on:favorite="favoriteJoke" />
         </div>

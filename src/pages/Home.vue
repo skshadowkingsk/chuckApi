@@ -1,8 +1,13 @@
 <template>
-    <div>
+    <div >
         <v-text-field  label="Filter" placeholder="Chuck Norris can make any lesbian go straight." box color="purple" v-model="texto"/>
-        <div v-for="(joke) in jokes" :key="joke.id">
-            <joke :joke="joke" :index="joke.id" v-on:remove="removeJoke" v-on:favorite="favoriteJoke" v-if="filter(joke)" />
+        <div  v-if="filtered.length">
+            <div v-for="(joke) in filtered" :key="joke.id">
+            <joke :joke="joke" :index="joke.id" v-on:remove="removeJoke" v-on:favorite="favoriteJoke"/>
+            </div>
+        </div>
+        <div v-else>
+            <error/>
         </div>
         <v-footer class="grey darken-4 " fixed bottom>
                 <div class="white--text ml-5 text-xs-center ">
@@ -25,12 +30,13 @@
 
 <script>
 import Joke from '../components/Joke.vue';
+import Error from '../components/Error.vue';
 import axios from 'axios';
 
 export default {
     name: "Home",
     components: {
-        Joke
+        Joke, Error
     },
     data() {
         return {
@@ -54,14 +60,14 @@ export default {
     
 },
     methods: {
-        filter: function (todo) {
+        /*filter: function (todo) {
         let self = this
         if (this.value != "") {
             
           return (todo.value.toLowerCase().includes(self.texto.toLowerCase()) == true || todo.id.toString().includes(self.texto.toLowerCase()) == true)
         }
         return true
-      },
+      },*/
             getJoke: function () {
                 axios.get("https://api.chucknorris.io/jokes/random").then((response) => {
                     let joke = response.data;
@@ -95,11 +101,17 @@ export default {
         },
         index: function(){
             return this.$store.getters.index;
+        },
+        filtered: function() {
+            return this.$store.getters.jokes.filter((j)=>{
+                return (j.value.toLowerCase().includes(this.texto.toLowerCase()) == true || j.id.toString().includes(this.texto.toLowerCase()) == true);
+            });
         }
     }
 }
 </script>
 
 <style scopped>
+
     
 </style>

@@ -66,9 +66,12 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
+
+$color:grey;
+
 .login{
-    background-color: gray;
+    background-color: $color;
 }
 </style>
 

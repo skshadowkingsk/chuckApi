@@ -1,5 +1,5 @@
 <template>
-  <v-app> 
+  <v-app class="div"> 
     <v-content>
       <router-view name="header">
         <Header/>
@@ -32,3 +32,9 @@ export default {
   }
 }
 </script>
+<style>
+.v-content__wrap{
+    background-color: gray;
+}
+</style>
+
