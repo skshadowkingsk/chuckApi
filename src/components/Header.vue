@@ -36,7 +36,7 @@
                 <span class="font-weight-light">JOKES</span>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn flat href="https://github.com/renanbrando/Chuck-Norris-Jokes.git" target="_blank">
+            <v-btn flat href="https://github.com/skshadowkingsk/chuckApi" target="_blank">
                 <span class="mr-2">See More</span>
             </v-btn>
             <v-btn flat @click="goHome">
