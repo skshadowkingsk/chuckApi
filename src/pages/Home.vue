@@ -84,7 +84,12 @@ export default {
                     return a.id != toRemove.id
                 })
             );
-            //this.$store.commit("changeIndex", (this.$store.getters.index-1));          
+            // eslint-disable-next-line no-console
+                    console.log(this); 
+        for(let i=0;i<this.$store.getters.jokes.length;i++){
+            this.$store.getters.jokes[i].id=i+1
+            }
+            this.$store.commit("changeIndex", this.$store.getters.jokes.length);       
             this.snackbarText = "The joke is gone!";
             this.snackbar = true;
         },
