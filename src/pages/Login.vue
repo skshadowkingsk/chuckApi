@@ -21,6 +21,10 @@
                                     </v-btn>
 
                                     <v-btn @click="clear">
+                                        Clear
+                                    </v-btn>
+
+                                    <v-btn >
                                         Forgot Password?
                                     </v-btn>
                                 </v-layout>

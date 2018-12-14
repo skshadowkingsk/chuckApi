@@ -1,6 +1,6 @@
 <template>
     <div >
-        <v-text-field  label="Filter" placeholder="Chuck Norris can make any lesbian go straight." box color="purple" v-model="texto"/>
+        <v-text-field class="texto " label="Filter" placeholder="Chuck Norris can make any lesbian go straight." box light color="purple" v-model="texto"/>
         <div  v-if="filtered.length">
             <div v-for="(joke) in filtered" :key="joke.id">
             <joke :joke="joke" :index="joke.id" v-on:remove="removeJoke" v-on:favorite="favoriteJoke"/>
@@ -84,8 +84,6 @@ export default {
                     return a.id != toRemove.id
                 })
             );
-            // eslint-disable-next-line no-console
-                    console.log(this); 
         for(let i=0;i<this.$store.getters.jokes.length;i++){
             this.$store.getters.jokes[i].id=i+1
             }

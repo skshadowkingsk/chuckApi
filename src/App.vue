@@ -34,7 +34,7 @@ export default {
 </script>
 <style>
 .v-content__wrap{
-    background-color: gray;
+    background-color: white;
 }
 </style>
 

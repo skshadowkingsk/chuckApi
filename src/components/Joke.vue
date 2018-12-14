@@ -1,7 +1,7 @@
 <template>
   <v-container fluid grid-list-lg >
     <v-flex xs12 >
-      <v-card color="white" class="black--text">
+      <v-card color="darken lighten-2" class="black--text">
         <v-layout>
           <v-flex xs2>
             <v-img :src="joke.icon_url" height="150px" contain></v-img>
@@ -11,7 +11,7 @@
               <div>
                 <div class="headline">#FunJoke {{joke.id}}</div>
                 <div>
-                  <blockquote>
+                  <blockquote class="white--text">
                     <p>{{joke.value}}</p>
                   </blockquote>
                 </div>
@@ -58,7 +58,7 @@ export default {
 <style scoped>
 
 blockquote {
-  background: #f9f9f9;
+  background: #5c5c5c;
   border-left: 10px solid #ccc;
   margin: 1.5em 10px;
   padding: 1.5em 10px;
