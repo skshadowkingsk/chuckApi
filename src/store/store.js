@@ -39,6 +39,9 @@ export const store = new Vuex.Store({
         },
         incrementIndex(state){
             state.index+=1;
+        },
+        changeIndex(state, index){
+            state.index = index;
         }
     },
     getters: {

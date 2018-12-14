@@ -84,6 +84,7 @@ export default {
                     return a.id != toRemove.id
                 })
             );
+            //this.$store.commit("changeIndex", (this.$store.getters.index-1));          
             this.snackbarText = "The joke is gone!";
             this.snackbar = true;
         },
